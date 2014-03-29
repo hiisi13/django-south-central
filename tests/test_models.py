@@ -22,4 +22,4 @@ class Test_MigrationHistory(unittest.TestCase):
             app_name='test_app',
             migration_name='test_migration'
         )
-        self.assertEquals('<test_app: test_migration>', str(model))
+        self.assertEqual('<test_app: test_migration>', str(model))
