@@ -45,10 +45,18 @@ class Migrations(list):
 
     def _load_migrations(self, migrations_dir):
         filenames = []
-        for f in os.listdir(migrations_dir):
-            if os.path.isfile(f) and f.endwith('.py'):
-                filenames.append(f)
-        self.extend(filenames)
+        for root, dirs, filenames in os.walk(migrations_dir):
+            self.extend([f for f in filenames if f.endswith('.py')])
+
+    def next_filename(self, name):
+        highest_number = 0
+        for filename in self:
+            try:
+                number = int(filename.split("_")[0])
+                highest_number = max(highest_number, number)
+            except ValueError:
+                pass
+        return "%04i_%s.py" % (highest_number + 1, name)
 
 
 

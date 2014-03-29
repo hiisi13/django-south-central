@@ -40,6 +40,10 @@ class Test_Migrations(unittest.TestCase):
         init_path = os.path.join(self.migrations_dir, '__init__.py')
         self.assertTrue(os.path.exists(init_path))
 
+    def test_next_filename(self):
+        next_filename = self.migrations.next_filename('test')
+        self.assertEqual('0001_test.py', next_filename)
+
 
     @classmethod
     def tearDownClass(cls):
