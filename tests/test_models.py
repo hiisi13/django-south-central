@@ -15,13 +15,11 @@ import unittest
 from south_central import models
 
 
-class TestSouth_central(unittest.TestCase):
+class Test_MigrationHistory(unittest.TestCase):
 
-    def setUp(self):
-        pass
-
-    def test_something(self):
-        pass
-
-    def tearDown(self):
-        pass
+    def test_str(self):
+        model = models.MigrationHistory(
+            app_name='test_app',
+            migration_name='test_migration'
+        )
+        self.assertEquals('<test_app: test_migration>', str(model))
