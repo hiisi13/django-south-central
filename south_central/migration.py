@@ -17,8 +17,23 @@ class Migrations(list):
         return self._app_name + '.appmigrations'
 
 
-    def ensure_migrations_dir(self, app_name):
-        migrations_dir = self.migration_module()
+    def migrations_dir(self):
+        module_path = self.migrations_module()
+        try:
+            module = importlib.import_module(module_path)
+        except ImportError:
+            try:
+                parent = importlib.import_module(".".join(module_path.split(".")[:-1]))
+            except ImportError:
+                raise
+            else:
+                return os.path.join(os.path.dirname(parent.__file__), module_path.split(".")[-1])
+        else:
+            return os.path.dirname(module.__file__)
+
+
+    def _ensure_migrations_dir(self, app_name):
+        migrations_dir = self.migrations_dir()
         if not os.path.isdir(migrations_dir):
             os.mkdir(migrations_dir)
         init_path = os.path.join(migrations_dir, "__init__.py")
