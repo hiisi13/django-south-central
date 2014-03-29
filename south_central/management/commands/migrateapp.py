@@ -19,7 +19,7 @@ def import_migration_module(migrations_module, migration):
 
 class Command(BaseCommand):
 
-    def handle(self, app):
+    def handle(self, app, *args, **kwargs):
         app_migrations = Migrations(app)
         migrations_module = app_migrations.migrations_module()
 

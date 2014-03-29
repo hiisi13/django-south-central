@@ -1,4 +1,12 @@
 import sys
+import os
+import shutil
+
+
+os.mkdir("test_app")
+open(os.path.join("test_app", '__init__.py'), 'w').close()
+open(os.path.join("test_app", 'models.py'), 'w').close()
+
 
 try:
     from django.conf import settings
@@ -17,6 +25,7 @@ try:
             "django.contrib.contenttypes",
             "django.contrib.sites",
             "south_central",
+            "test_app"
         ],
         SITE_ID=1,
         NOSE_ARGS=['-s'],
@@ -35,6 +44,8 @@ def run_tests(*test_args):
     test_runner = NoseTestSuiteRunner(verbosity=1)
 
     failures = test_runner.run_tests(test_args)
+
+    # shutil.rmtree("test_app")
 
     if failures:
         sys.exit(failures)

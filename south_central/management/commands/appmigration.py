@@ -1,12 +1,16 @@
+import re
+import os
+
 from django.core.management.base import BaseCommand
 from django.db import models
+from django.core.exceptions import ImproperlyConfigured
 
 from south_central.migration import Migrations
 
 
 class Command(BaseCommand):
 
-    def handle(self, app, name):
+    def handle(self, app, name, *args, **kwargs):
         if re.search('[^_\w]', name) and name != '-':
             self.error('Migration names should contain only alphanumeric characters and underscores.')
 
