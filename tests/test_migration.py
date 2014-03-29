@@ -22,8 +22,6 @@ class Test_Migrations(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        os.mkdir(cls.test_app_name)
-        open(os.path.join(cls.test_app_name, '__init__.py'), 'w').close()
         cls.migrations = migration.Migrations(cls.test_app_name)
         cls.migrations_dir = cls.test_app_name + '/appmigrations'
 
@@ -43,8 +41,3 @@ class Test_Migrations(unittest.TestCase):
     def test_next_filename(self):
         next_filename = self.migrations.next_filename('test')
         self.assertEqual('0001_test.py', next_filename)
-
-
-    @classmethod
-    def tearDownClass(cls):
-        shutil.rmtree(cls.test_app_name)

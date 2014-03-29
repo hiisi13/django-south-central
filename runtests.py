@@ -45,7 +45,7 @@ def run_tests(*test_args):
 
     failures = test_runner.run_tests(test_args)
 
-    # shutil.rmtree("test_app")
+    shutil.rmtree("test_app")
 
     if failures:
         sys.exit(failures)

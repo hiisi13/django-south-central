@@ -46,7 +46,8 @@ class Migrations(list):
     def _load_migrations(self, migrations_dir):
         filenames = []
         for root, dirs, filenames in os.walk(migrations_dir):
-            self.extend([f.split('.')[0] for f in filenames if f.endswith('.py')])
+            self.extend([f.split('.')[0] for f in filenames \
+                            if f.endswith('.py') and not f.startswith('__init__')])
 
     def next_filename(self, name):
         highest_number = 0

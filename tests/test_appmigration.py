@@ -6,9 +6,6 @@ import shutil
 import unittest
 
 from django.core.management import call_command
-from django.conf import settings
-
-from south_central import migration
 
 
 class Test_Appmigration(unittest.TestCase):
@@ -21,15 +18,14 @@ class Test_Appmigration(unittest.TestCase):
     def setUpClass(cls):
         cls.migrations_dir = cls.test_app_name + '/appmigrations'
         call_command('appmigration', cls.test_app_name, cls.test_migration_name)
-
-
-    def test_create_migration(self):
-        filename = '0001_' + self.test_migration_name + '.py'
-        path = os.path.join(self.migrations_dir, filename)
-        self.assertTrue(os.path.exists(path))
+        cls.filename = '0001_' + cls.test_migration_name + '.py'
 
 
     @classmethod
     def tearDownClass(cls):
-        pass
-        # shutil.rmtree(cls.test_app_name)
+        os.remove(os.path.join(cls.migrations_dir, cls.filename))
+
+
+    def test_create_migration(self):
+        path = os.path.join(self.migrations_dir, self.filename)
+        self.assertTrue(os.path.exists(path))
