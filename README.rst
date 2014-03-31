@@ -11,7 +11,7 @@ django-south-central
 .. image:: https://coveralls.io/repos/hiisi13/south_central/badge.png?branch=master
     :target: https://coveralls.io/r/hiisi13/south_central?branch=master
 
-Application state migration tool, inspired by South
+Run maintenance commands for Django apps in database migrations fashion 
 
 Documentation
 -------------
