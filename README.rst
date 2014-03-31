@@ -4,9 +4,9 @@ django-south-central
 
 .. image:: https://badge.fury.io/py/south_central.png
     :target: https://badge.fury.io/py/south_central
-
-.. image:: https://travis-ci.org/hiisi13/south_central.png?branch=master
-    :target: https://travis-ci.org/hiisi13/south_central
+    
+.. image:: https://travis-ci.org/hiisi13/django-south-central.svg   
+    :target: https://travis-ci.org/hiisi13/django-south-central
 
 .. image:: https://coveralls.io/repos/hiisi13/south_central/badge.png?branch=master
     :target: https://coveralls.io/r/hiisi13/south_central?branch=master
