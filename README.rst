@@ -11,25 +11,29 @@ django-south-central
 .. image:: https://coveralls.io/repos/hiisi13/south_central/badge.png?branch=master
     :target: https://coveralls.io/r/hiisi13/south_central?branch=master
 
-Run maintenance commands for Django apps in database migrations fashion 
+Run maintenance commands for Django apps in database migrations fashion.
 
-Documentation
--------------
-
-The full documentation is at https://south_central.readthedocs.org.
+Right 
 
 Quickstart
 ----------
 
-Install django-south-central::
+* Install django-south-central::
 
     pip install south_central
+    
+* Create database table for history::
 
-Then use it in a project::
+    python manage.py syncdb
 
-    import south_central
 
-Features
+Usage
 --------
 
-* TODO
+* Generate migration file::
+    
+    python manage.py appmigration app_name migration_name
+    
+* Apply migration::
+
+    python manage.py migrateapp app_name
