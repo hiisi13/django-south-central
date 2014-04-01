@@ -2,8 +2,8 @@
 django-south-central
 =============================
 
-.. image:: https://badge.fury.io/py/south_central.png
-    :target: https://badge.fury.io/py/south_central
+.. image:: https://badge.fury.io/py/django-south-central.png
+    :target: https://badge.fury.io/py/django-south-central
     
 .. image:: https://travis-ci.org/hiisi13/django-south-central.svg?branch=master   
     :target: https://travis-ci.org/hiisi13/django-south-central
