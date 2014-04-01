@@ -7,13 +7,11 @@ django-south-central
     
 .. image:: https://travis-ci.org/hiisi13/django-south-central.svg?branch=master   
     :target: https://travis-ci.org/hiisi13/django-south-central
-
-.. image:: https://coveralls.io/repos/hiisi13/south_central/badge.png?branch=master
-    :target: https://coveralls.io/r/hiisi13/south_central?branch=master
-
+    
+.. image:: https://coveralls.io/repos/hiisi13/django-south-central/badge.png?branch=master 
+    :target: https://coveralls.io/r/hiisi13/django-south-central?branch=master
+    
 Run maintenance commands for Django apps in database migrations fashion.
-
-Right 
 
 Quickstart
 ----------
