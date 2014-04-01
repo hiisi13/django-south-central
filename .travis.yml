@@ -1,5 +1,3 @@
-# Config file for automatic testing at travis-ci.org
-
 language: python
 
 python:
@@ -7,8 +5,8 @@ python:
   - "2.7"
   - "2.6"
 
-# command to run tests using coverage, e.g. python setup.py test
+install: pip install -r requirements-test.txt
+
 script: coverage run --source south_central runtests.py
 
-# report coverage to coveralls.io
 after_success: coveralls
