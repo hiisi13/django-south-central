@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import re
 import os
 
@@ -17,14 +19,18 @@ class Command(BaseCommand):
         try:
             app_module = models.get_app(app)
         except ImproperlyConfigured:
-            print("There is no enabled application matching '%s'." % app)
-            return
+            self.error("There is no enabled application matching '%s'." % app)
 
         migrations = Migrations(app)
         new_filename = migrations.next_filename(name)
 
         with open(os.path.join(migrations.migrations_dir(), new_filename), "w") as fp:
             fp.write(MIGRATION_TEMPLATE)
+
+
+    def error(self, message, code=1):
+        print(message, file=sys.stderr)
+        sys.exit(code)
 
 
 MIGRATION_TEMPLATE = """# -*- coding: utf-8 -*-
