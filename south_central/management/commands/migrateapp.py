@@ -1,12 +1,11 @@
 from django.core.management.base import BaseCommand
-from django.utils import importlib
 
 from south_central.migration import Migrations
 from south_central.models import MigrationHistory
 
 
 def to_apply(all_migrations, applied):
-    return [m for m in all_migrations if not m in applied]
+    return [m for m in all_migrations if m not in applied]
 
 
 def migration_module(basename, module_name):
@@ -15,6 +14,7 @@ def migration_module(basename, module_name):
 
 def import_migration_module(migrations_module, migration):
     module = migration_module(migrations_module, migration)
+    print(module)
     return __import__(module, {}, {}, ['Migration'])
 
 
@@ -25,7 +25,7 @@ class Command(BaseCommand):
         migrations_module = app_migrations.migrations_module()
 
         applied = MigrationHistory.objects.filter(app_name=app) \
-                    .values_list('migration_name', flat=True).order_by('applied_on')
+            .values_list('migration_name', flat=True).order_by('applied_on')
         workplan = to_apply(app_migrations, applied)
 
         for m in workplan:

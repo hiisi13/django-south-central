@@ -8,8 +8,6 @@ test_south_central
 Tests for `south_central` models module.
 """
 
-import os
-import shutil
 import unittest
 
 from south_central import models

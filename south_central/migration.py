@@ -1,5 +1,4 @@
 import os
-import sys
 
 
 from django.utils import importlib
@@ -12,10 +11,8 @@ class Migrations(list):
         migrations_dir = self._ensure_migrations_dir(app_name)
         self._load_migrations(migrations_dir)
 
-
     def migrations_module(self):
         return self._app_name + '.appmigrations'
-
 
     def migrations_dir(self):
         module_path = self.migrations_module()
@@ -31,7 +28,6 @@ class Migrations(list):
         else:
             return os.path.dirname(module.__file__)
 
-
     def _ensure_migrations_dir(self, app_name):
         migrations_dir = self.migrations_dir()
         if not os.path.isdir(migrations_dir):
@@ -42,12 +38,11 @@ class Migrations(list):
             open(init_path, "w").close()
         return migrations_dir
 
-
     def _load_migrations(self, migrations_dir):
         filenames = []
         for root, dirs, filenames in os.walk(migrations_dir):
-            self.extend([f.split('.')[0] for f in filenames \
-                            if f.endswith('.py') and not f.startswith('__init__')])
+            self.extend([f.split('.')[0] for f in filenames
+                        if f.endswith('.py') and not f.startswith('__init__')])
 
     def next_filename(self, name):
         highest_number = 0
@@ -58,7 +53,3 @@ class Migrations(list):
             except ValueError:
                 pass
         return "%04i_%s.py" % (highest_number + 1, name)
-
-
-
-

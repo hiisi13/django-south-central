@@ -24,10 +24,10 @@ clean-pyc:
 	find . -name '*~' -exec rm -f {} +
 
 lint:
-	flake8 south_central tests
+	flake8 south_central tests --ignore=E501
 
 test:
-	python runtests.py test
+	python runtests.py tests
 
 test-all:
 	tox
