@@ -14,7 +14,6 @@ def migration_module(basename, module_name):
 
 def import_migration_module(migrations_module, migration):
     module = migration_module(migrations_module, migration)
-    print(module)
     return __import__(module, {}, {}, ['Migration'])
 
 

@@ -38,8 +38,16 @@ class Command(BaseCommand):
 
 
 def join_args(args):
-    args = ['"{0}"'.format(arg) if isinstance(arg, str) else str(arg) for arg in args]
+    args = ['"{0}"'.format(arg) if not isnumber(arg) else str(arg) for arg in args]
     return ", ".join(args)
+
+
+def isnumber(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
 
 
 MIGRATION_TEMPLATE = """# -*- coding: utf-8 -*-

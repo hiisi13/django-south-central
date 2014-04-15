@@ -41,15 +41,15 @@ class Test_Appmigration(unittest.TestCase):
 
     def test_create_call_command_with_int_arg_migration(self):
         call_command('appmigration', self.test_app_name, self.test_migration_name,
-                     'cmd_name', 1)
+                     'cmd_name', '1')
         self.assert_migration_contents('call_command("cmd_name", 1)')
 
     def test_create_call_command_with_float_arg_migration(self):
         call_command('appmigration', self.test_app_name, self.test_migration_name,
-                     'cmd_name', 1.01)
+                     'cmd_name', '1.01')
         self.assert_migration_contents('call_command("cmd_name", 1.01)')
 
     def test_create_call_command_with_multiple_args_migration(self):
         call_command('appmigration', self.test_app_name, self.test_migration_name,
-                     'cmd_name', 'cmd_arg', 1, 1.01)
+                     'cmd_name', 'cmd_arg', '1', '1.01')
         self.assert_migration_contents('call_command("cmd_name", "cmd_arg", 1, 1.01)')
