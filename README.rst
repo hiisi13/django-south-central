@@ -18,7 +18,7 @@ Quickstart
 
 * Install django-south-central::
 
-    pip install south_central
+    pip install django-south-central
 
 * Create database table for history::
 
